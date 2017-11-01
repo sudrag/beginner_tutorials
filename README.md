@@ -43,9 +43,9 @@ rosrun beginner_tutorials talker
 ```
 The output should be similar to: 
 
-`[ INFO] [1509498746.921039616]: Modified String Inserted :104`
-`[ INFO] [1509498747.021040830]: Modified String Inserted :105`
-`...`
+>[ INFO] [1509498746.921039616]: Modified String Inserted :104
+>[ INFO] [1509498747.021040830]: Modified String Inserted :105
+>...
 
 * In Terminal 3 run:
 ```
@@ -55,9 +55,9 @@ rosrun beginner_tutorials listener
 ```
 The output messages should be similar to:
 
-`[ INFO] [1509498746.921492670]: I heard: [Modified String Inserted :104]`
-`[ INFO] [1509498747.021447273]: I heard: [Modified String Inserted :105]`
-`...`
+>[ INFO] [1509498746.921492670]: I heard: [Modified String Inserted :104]
+>[ INFO] [1509498747.021447273]: I heard: [Modified String Inserted :105]
+>...
 
 ## Dependencies
 
