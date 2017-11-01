@@ -4,14 +4,6 @@
 
 This project is an introduction to ROS and performs beginner tutorials and executes a simple publisher and subscriber implemented in C++. The project involves understanding of ROS topics, nodes, messages and services. The publisher node publishes a modified custom string which is then heard by the subscriber. 
 
-## Dependencies
-
-* ROS Kinetic
-* Catkin
-* roscpp package
-* std_msgs package
-* message_generation package
-
 ## To Build
 
 * Creating a catkin workspace:
@@ -51,7 +43,9 @@ rosrun beginner_tutorials talker
 ```
 The output should be similar to: 
 
-`[ INFO] [1509498749.420910136]: Modified String Inserted :129`
+`[ INFO] [1509498746.921039616]: Modified String Inserted :104`
+`[ INFO] [1509498747.021040830]: Modified String Inserted :105`
+`...`
 
 * In Terminal 3 run:
 ```
@@ -61,6 +55,14 @@ rosrun beginner_tutorials listener
 ```
 The output messages should be similar to:
 
-`[ INFO] [1509498747.921466786]: I heard: [Modified String Inserted :129]`
+`[ INFO] [1509498746.921492670]: I heard: [Modified String Inserted :104]`
+`[ INFO] [1509498747.021447273]: I heard: [Modified String Inserted :105]`
+`...`
 
+## Dependencies
 
+* ROS Kinetic
+* Catkin
+* roscpp package
+* std_msgs package
+* message_generation package
