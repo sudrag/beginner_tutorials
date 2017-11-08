@@ -8,7 +8,25 @@
 #include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "ros/console.h"
+#include "std_msgs/String.h"
+#include "beginner_tutorials/Services.h"
 
+
+// Message from master, message without service
+std::string message = "Modified String Inserted :";  // NOLINT
+/**
+ * @brief Updates message to subsribe, send to listener
+ * @param request and response from srv
+ * @return true
+ */
+bool update_string(beginner_tutorials::Services::Request &req,  // NOLINT
+    beginner_tutorials::Services::Response &res) {  // NOLINT
+      message = req.mesReq;
+      res.mesRep = message;
+  ROS_INFO_STREAM("Updating with the new message");
+      return true;
+    }
 
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.
@@ -52,9 +70,26 @@ int main(int argc, char **argv) {
    */
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 
-  ros::Rate loop_rate(10);
+   int rate = 10;  // defualt of 10
+  if (argc == 2) {  // if argument is given from launch arc will equal 2, otherwise 1
+    if (atoi(argv[1]) < 0) {
+      ROS_ERROR_STREAM("Frequency entered is negative");
+    }
+    rate = atoi(argv[1]);  // argv[1] is the argument talkFreq when we say talkFreq:=value in roslaunch command
+    ROS_DEBUG_STREAM("Frequency changed to " << rate);
+  }
 
-  /**
+  if (rate < 3) {
+    ROS_WARN_STREAM("Publisher Frequency is too slow");
+  }
+
+  ros::Rate loop_rate(rate);  // set the rate
+  ROS_INFO_STREAM("Currrent Rate: " << rate);
+
+  ros::ServiceServer service = n.advertiseService("update", update_string);  // Server
+ 
+
+ /**
    * A count of how many messages we have sent. This is used to create
    * a unique string for each message.
    */
@@ -66,7 +101,7 @@ int main(int argc, char **argv) {
     std_msgs::String msg;
 
     std::stringstream ss;
-    ss << "Modified String Inserted :" << count;
+    ss << message<< " " << count;
     msg.data = ss.str();
 
     ROS_INFO("%s", msg.data.c_str());
