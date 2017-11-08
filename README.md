@@ -72,6 +72,11 @@ rosservice call /update String
 ```
 Here, `String` is the new message to be published
 
+An example can be seen in the image below:
+
+![alt text](Output_image/output.png "Replaced with string Hi")
+
+
 # Using the launch file
 
 * The launch file can be used to run the entire package
