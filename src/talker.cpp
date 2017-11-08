@@ -15,7 +15,7 @@
 // Message from master, message without service
 std::string message = "Modified String Inserted :";  // NOLINT
 /**
- * @brief Updates message to subsribe, send to listener
+ * @brief Updates subscribed messages
  * @param request and response from srv
  * @return true
  */
@@ -28,7 +28,9 @@ bool update_string(beginner_tutorials::Services::Request &req,  // NOLINT
     }
 
 /**
- * This tutorial demonstrates simple sending of messages over the ROS system.
+ * @brief This tutorial demonstrates simple sending of messages over the ROS system.
+ * @param argc and argv
+ * @return 0
  */
 int main(int argc, char **argv) {
   /**

@@ -2,19 +2,25 @@
  * @file        : listener.cpp
  * @author      : Sudarshan Raghunathan
  * @copyright   : 2017 Sudarshan Raghunathan
- * @brief       : Qlearning class member function declarations
+ * @brief       : ROS listener
  */
 
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "beginner_tutorials/Services.h"
 /**
- * This tutorial demonstrates simple receipt of messages over the ROS system.
+ * @brief This tutorial demonstrates simple receipt of messages over the ROS system.
  */
 void chatterCallback(const std_msgs::String::ConstPtr& msg) {
   ROS_DEBUG_STREAM("Call " << "Back");
   ROS_INFO_STREAM("I heard: " << msg->data.c_str());
 }
+
+/**
+ * @brief This tutorial demonstrates simple sending of messages over the ROS system.
+ * @param argc and argv
+ * @return 0
+ */
 
 int main(int argc, char **argv) {
   /**
