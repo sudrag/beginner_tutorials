@@ -52,8 +52,8 @@ int main(int argc, char **argv) {
    * away the oldest ones.
    */
   ros::Subscriber sub = n.subscribe("chatter", 1000, chatterCallback);
-  if (!sub) {
-    ROS_FATAL_STREAM("Subscribe Error, subscribe not successful");  // In case subscribe fails
+  if (!sub) {  // In case subscriber fails
+  ROS_FATAL_STREAM("Subscribe Error, subscribe not successful");
   }
 
 

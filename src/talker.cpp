@@ -9,7 +9,6 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "ros/console.h"
-#include "std_msgs/String.h"
 #include "beginner_tutorials/Services.h"
 
 
@@ -70,12 +69,12 @@ int main(int argc, char **argv) {
    */
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 
-   int rate = 10;  // defualt of 10
-  if (argc == 2) {  // if argument is given from launch arc will equal 2, otherwise 1
+  int rate = 10;  // Default value of 10
+  if (argc == 2) {
     if (atoi(argv[1]) < 0) {
       ROS_ERROR_STREAM("Frequency entered is negative");
     }
-    rate = atoi(argv[1]);  // argv[1] is the argument talkFreq when we say talkFreq:=value in roslaunch command
+    rate = atoi(argv[1]);  // argv[1] is the Frequency
     ROS_DEBUG_STREAM("Frequency changed to " << rate);
   }
 
@@ -83,12 +82,9 @@ int main(int argc, char **argv) {
     ROS_WARN_STREAM("Publisher Frequency is too slow");
   }
 
-  ros::Rate loop_rate(rate);  // set the rate
+  ros::Rate loop_rate(rate);  // Setting rate
   ROS_INFO_STREAM("Currrent Rate: " << rate);
-
-  ros::ServiceServer service = n.advertiseService("update", update_string);  // Server
- 
-
+  ros::ServiceServer service = n.advertiseService("update", update_string);
  /**
    * A count of how many messages we have sent. This is used to create
    * a unique string for each message.

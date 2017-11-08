@@ -39,8 +39,10 @@ Do not close this terminal
 ```
 cd catkin_ws
 source devel/setup.bash
-rosrun beginner_tutorials talker
+rosrun beginner_tutorials talker Frequency
 ```
+Here `Frequency` is an integer value provided as an argument to the node and represents the talker frequency rate
+
 The output should be similar to: 
 
 >[ INFO] [1509498746.921039616]: Modified String Inserted :104  
@@ -58,6 +60,30 @@ The output messages should be similar to:
 >[ INFO] [1509498746.921492670]: I heard: [Modified String Inserted :104]  
 >[ INFO] [1509498747.021447273]: I heard: [Modified String Inserted :105]  
 >...
+
+# Calling the service
+* To call the service one most first run the talker and listener nodes following the instructions above. This can be checked by running `rosservice list` which returns a list of services which must contain `update` 
+* The service can now be called to change the message to be published using the following commands
+
+```
+cd catkin_ws
+source devel/setup.bash
+rosservice call /update String
+```
+Here, `String` is the new message to be published
+
+# Using the launch file
+
+* The launch file can be used to run the entire package
+* Close all nodes related to the package and follow the steps below
+
+```
+cd catkin_ws
+source devel/setup.bash
+roslaunch beginner_tutorials Week10.launch frequency:=7
+```
+The argument `frequency` is set to 7 in this case. If this argument is not provided the default frequency is taken to be 10.
+This will execute the launch file and run the talker on the current terminal and the listener on a new terminal which pops up.
 
 ## Dependencies
 
