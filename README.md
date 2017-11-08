@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is an introduction to ROS and performs beginner tutorials and executes a simple publisher and subscriber implemented in C++. The project involves understanding of ROS topics, nodes, messages and services. The publisher node publishes a modified custom string which is then heard by the subscriber. 
+This branch is a continuation of the introduction to ROS and performs beginner tutorials and executes a simple publisher and subscriber implemented in C++. The project involves understanding of ROS topics, nodes, messages and services. The publisher node publishes a modified custom string which is then heard by the subscriber. There also exists a service which allows on to modify the custom string and also the frequency of the nodes. The two nodes can also be called by a launch file.
 
 ## To Build
 
