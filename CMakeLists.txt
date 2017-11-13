@@ -190,14 +190,21 @@ include_directories(
 ## Testing ##
 #############
 
-## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_beginner_tutorials.cpp)
-# if(TARGET ${PROJECT_NAME}-test)
-#   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
-# endif()
+#gtest
+if (CATKIN_ENABLE_TESTING)
+ find_package(rostest REQUIRED)
+ add_rostest_gtest(Test_talker tests/Test_talker.launch 
+ tests/Test_talker.cpp)
+ target_link_libraries(Test_talker ${catkin_LIBRARIES})
 
-## Add folders to be run by python nosetests
-# catkin_add_nosetests(test)
+  add_dependencies(
+  Test_talker
+  talker
+  ${catkin_EXPORTED_TARGETS}
+  )
+endif()
+
+
 add_executable(talker src/talker.cpp)
 target_link_libraries(talker ${catkin_LIBRARIES})
 add_dependencies(talker beginner_tutorials_generate_messages_cpp)
