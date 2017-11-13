@@ -1,6 +1,8 @@
 <launch>
 
   <arg name="frequency" default= "10"/>
+  
+  <arg name = "StartRec" default = "false" />
 
   <node pkg="beginner_tutorials" 
         name="talker" 
@@ -15,5 +17,15 @@
 	launch-prefix = "gnome-terminal --command" 
         output= "screen">
   </node>
+ 
+  <node pkg = "rosbag"
+	type = "record"
+	name = "rosbag_record_all"
+	respawn = "true"
+	output = "screen"
+	args = "-a -O BagFile"
+	if = "$(arg StartRec)">
+  </node>
 
+ 
 </launch>

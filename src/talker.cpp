@@ -77,10 +77,10 @@ int main(int argc, char **argv) {
 
   int rate = 10;  // Default value of 10
   if (argc == 2) {
+     rate = std::atoi(argv[1]);  // argv[1] is the Frequency
     if (atoi(argv[1]) < 0) {
       ROS_ERROR_STREAM("Frequency entered is negative");
     }
-    rate = atoi(argv[1]);  // argv[1] is the Frequency
     ROS_DEBUG_STREAM("Frequency changed to " << rate);
   }
 
