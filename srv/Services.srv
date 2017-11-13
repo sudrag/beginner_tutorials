@@ -1,4 +1,3 @@
-int64 a
-int64 b
+string mesReq
 ---
-int64 sum
+string mesRep

@@ -1,4 +1,4 @@
+$ cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )
 Done processing ./src/talker.cpp
 Done processing ./src/listener.cpp
-Total errors found: 0
 
