@@ -5,7 +5,11 @@
  * @brief       : ROS Publisher
  */
 
+#include<tf/transform_broadcaster.h>
+#include<ros/console.h>
 #include <sstream>
+#include<cstdlib>
+#include<string>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "ros/console.h"
@@ -87,6 +91,11 @@ int main(int argc, char **argv) {
   ros::Rate loop_rate(rate);  // Setting rate
   ROS_INFO_STREAM("Currrent Rate: " << rate);
   ros::ServiceServer service = n.advertiseService("update", update_string);
+
+// TF broadcast
+  static tf::TransformBroadcaster br;
+  tf::Transform transform;
+
  /**
    * A count of how many messages we have sent. This is used to create
    * a unique string for each message.
@@ -102,8 +111,8 @@ int main(int argc, char **argv) {
     ss << message<< " " << count;
     msg.data = ss.str();
 
-    ROS_INFO("%s", msg.data.c_str());
-
+    ROS_INFO_STREAM(msg.data.c_str());
+    ROS_DEBUG_STREAM("The current rate is: "<<rate);
     /**
      * The publish() function is how you send messages. The parameter
      * is the message object. The type of this object must agree with the type
@@ -111,6 +120,14 @@ int main(int argc, char **argv) {
      * in the constructor above.
      */
     chatter_pub.publish(msg);
+
+    // TF broadcaster
+    transform.setOrigin(tf::Vector3(1.0, 1.0, 2.0));  //  Setting Translation
+    tf::Quaternion q;
+    q.setRPY(25, 20, 35);  // Setting rotations
+    transform.setRotation(q);
+    br.sendTransform(
+        tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
 
     ros::spinOnce();
 
