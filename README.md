@@ -108,10 +108,10 @@ rosrun beginner_tutorials talker
 rosrun tf tf_echo world talk
 ```
 The output should be similar to:
-> At time 1510696389.237
-> Translation: [1.000, 1.000, 2.000]
-> Rotation: in Quaternion [-0.517, -0.173, 0.809, -0.219]
->            in RPY (radian) [-0.133, 1.150, -2.699]
+> At time 1510696389.237  
+> Translation: [1.000, 1.000, 2.000]  
+> Rotation: in Quaternion [-0.517, -0.173, 0.809, -0.219]  
+>            in RPY (radian) [-0.133, 1.150, -2.699]  
 >            in RPY (degree) [-7.606, 65.916, -154.648]
 
 To view a visual of the frames tree, run the talker node as mentioned above and in a new terminal run:
